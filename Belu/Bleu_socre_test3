@@ -1,0 +1,12 @@
+﻿from nltk.translate.bleu_score import corpus_bleu
+
+candidates = [['','','','','','','','','',''], 
+                  ['','','','','','',''],
+                  ['','','','','','','','','',''],
+                  ['', '', '', '', '', '', '', '', '', ''],
+                  ]
+references = [[['好','啊','，''那','就','聊','聊','课','题','呗']],[['智','能','聊','天','机','器','人']],[['我','也','这','么','想','的','，','太','难','了']],[['不', '知', '道', '，', '我', '也', '不', '太', '理', '解']]]
+print('Cumulative 1-gram: %f' % corpus_bleu(references, candidates, weights=(1, 0, 0, 0)))
+print('Cumulative 2-gram: %f' % corpus_bleu(references, candidates, weights=(0.5, 0.5, 0, 0)))
+print('Cumulative 3-gram: %f' % corpus_bleu(references, candidates, weights=(0.33, 0.33, 0.33, 0)))
+print('Cumulative 4-gram: %f' % corpus_bleu(references, candidates, weights=(0.25, 0.25, 0.25, 0.25)))
